@@ -81,20 +81,20 @@
       <div class="blob blob-2" aria-hidden="true"></div>
 
       <div class="wrap hero-inner">
-        <p class="status reveal" id="status" aria-live="polite"><span class="dot"></span><span id="statusText">Checking hours…</span></p>
-        <h1 class="reveal" style="--d:.05s">
+        <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="statusText">Checking hours…</span></p>
+        <h1>
           <span class="script">Getnailed</span>
           Braids, installs &amp; hair,<br />done with love.
         </h1>
-        <p class="hero-lead reveal" style="--d:.1s">
+        <p class="hero-lead">
           Walk in feeling good, walk out feeling <em>great</em>. Book your slot in seconds on WhatsApp.
         </p>
-        <div class="hero-cta reveal" style="--d:.15s">
+        <div class="hero-cta">
           <a href="#book" class="btn"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Book an appointment</a>
           <a href="#services" class="btn btn-line">View services</a>
         </div>
 
-        <ul class="hero-icons reveal" style="--d:.2s">
+        <ul class="hero-icons">
           <li><span class="ring"><svg><use href="#i-braids" /></svg></span>Braids</li>
           <li><span class="ring"><svg><use href="#i-installs" /></svg></span>Installs</li>
           <li><span class="ring"><svg><use href="#i-hair" /></svg></span>Hair</li>
@@ -173,17 +173,17 @@
           <p>See more of our latest styles on Instagram.</p>
         </div>
 
-        <div class="tiles">
-          <figure class="tile t1 reveal"><img src="images/knotless-braids.jpg" alt="Long black knotless braids" loading="lazy" /><figcaption>Knotless braids</figcaption></figure>
-          <figure class="tile t2 reveal" style="--d:.05s"><img src="images/curly-install.jpg" alt="Long curly install" loading="lazy" /><figcaption>Curly install</figcaption></figure>
-          <figure class="tile t3 reveal" style="--d:.1s"><img src="images/ginger-braids.jpg" alt="Ginger coloured braids" loading="lazy" /><figcaption>Ginger braids</figcaption></figure>
-          <figure class="tile t4 reveal"><img src="images/stitch-braids.jpg" alt="Stitch braids" loading="lazy" /><figcaption>Stitch braids</figcaption></figure>
-          <figure class="tile t5 reveal" style="--d:.05s"><img src="images/natural-hair.jpg" alt="Healthy natural afro hair" loading="lazy" style="object-position: center 20%" /><figcaption>Natural hair</figcaption></figure>
-          <figure class="tile t6 reveal"><img src="images/curly-styling.jpg" alt="Curly hair styling" loading="lazy" style="object-position: center 20%" /><figcaption>Curly styling</figcaption></figure>
-          <figure class="tile t7 reveal" style="--d:.05s"><img src="images/colour-braids.jpg" alt="Bold red colour braids" loading="lazy" style="object-position: center 35%" /><figcaption>Colour braids</figcaption></figure>
+        <div class="tiles reveal">
+          <figure class="tile t1"><img src="images/knotless-braids.jpg" alt="Long black knotless braids" loading="lazy" /><figcaption>Knotless braids</figcaption></figure>
+          <figure class="tile t2"><img src="images/curly-install.jpg" alt="Long curly install" loading="lazy" /><figcaption>Curly install</figcaption></figure>
+          <figure class="tile t3"><img src="images/ginger-braids.jpg" alt="Ginger coloured braids" loading="lazy" /><figcaption>Ginger braids</figcaption></figure>
+          <figure class="tile t4"><img src="images/stitch-braids.jpg" alt="Stitch braids" loading="lazy" /><figcaption>Stitch braids</figcaption></figure>
+          <figure class="tile t5"><img src="images/natural-hair.jpg" alt="Healthy natural afro hair" loading="lazy" style="object-position: center 20%" /><figcaption>Natural hair</figcaption></figure>
+          <figure class="tile t6"><img src="images/curly-styling.jpg" alt="Curly hair styling" loading="lazy" style="object-position: center 20%" /><figcaption>Curly styling</figcaption></figure>
+          <figure class="tile t7"><img src="images/colour-braids.jpg" alt="Bold red colour braids" loading="lazy" style="object-position: center 35%" /><figcaption>Colour braids</figcaption></figure>
         </div>
 
-        <div class="center reveal">
+        <div class="center">
           <a href="https://www.instagram.com/getnailed_beautylounge/" target="_blank" rel="noopener" class="btn btn-line">
             <i class="fa-brands fa-instagram" aria-hidden="true"></i> @getnailed_beautylounge
           </a>
@@ -253,26 +253,33 @@
             <input id="style" type="text" placeholder="e.g. Medium knotless, waist length" />
           </div>
 
-          <div class="f-row">
-            <div class="f">
-              <label for="date">Day</label>
-              <input id="date" type="date" required />
+          <div>
+            <div class="f-row">
+              <div class="f">
+                <label for="date">Day</label>
+                <input id="date" type="date" required />
+              </div>
+              <div class="f">
+                <label for="time">Time</label>
+                <select id="time" required disabled>
+                  <option value="">Pick a day first</option>
+                </select>
+              </div>
             </div>
-            <div class="f">
-              <label for="time">Time</label>
-              <select id="time" required disabled>
-                <option value="">Pick a day first</option>
-              </select>
+
+            <!-- Hidden for the Hair service; slides closed/open instead of snapping -->
+            <div class="collapse is-open" id="hairField">
+              <div class="collapse-inner">
+                <fieldset class="f">
+                  <legend>Hair / extensions</legend>
+                  <div class="pills">
+                    <label><input type="radio" name="hair" value="I'll bring my own hair" checked /><span>I'll bring my own</span></label>
+                    <label><input type="radio" name="hair" value="Please provide the hair" /><span>Please provide it</span></label>
+                  </div>
+                </fieldset>
+              </div>
             </div>
           </div>
-
-          <fieldset class="f" id="hairField">
-            <legend>Hair / extensions</legend>
-            <div class="pills">
-              <label><input type="radio" name="hair" value="I'll bring my own hair" checked /><span>I'll bring my own</span></label>
-              <label><input type="radio" name="hair" value="Please provide the hair" /><span>Please provide it</span></label>
-            </div>
-          </fieldset>
 
           <div class="f">
             <label for="name">Your name</label>

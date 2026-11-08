@@ -61,6 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
     reveals.forEach((el) => el.classList.add("in"));
   }
 
+  /* ---------- Pause the hero's drifting blobs while the hero is off-screen ---------- */
+  const hero = document.querySelector(".hero");
+  if (hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(([en]) => hero.classList.toggle("offscreen", !en.isIntersecting)).observe(hero);
+  }
+
   /* ---------- Live "Open now" status + today's row ---------- */
   const status = document.getElementById("status");
   const statusText = document.getElementById("statusText");
@@ -72,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("#week tr").forEach((tr) => tr.classList.toggle("today", Number(tr.dataset.day) === day));
 
     if (today && minutes >= today[0] * 60 && minutes < today[1] * 60) {
-      status.className = "status reveal in open";
+      status.className = "status open";
       statusText.textContent = `Open now · closes ${fmtHour(today[1])}`;
       return;
     }
@@ -90,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
-    status.className = "status reveal in closed";
+    status.className = "status closed";
     statusText.textContent = `Closed now · ${label}`;
   }
   updateStatus();
@@ -114,8 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // Hair question only matters for braids & installs
+  const hairShown = () => hairField.classList.contains("is-open");
   function toggleHair() {
-    hairField.hidden = service.value === "Hair";
+    const show = service.value !== "Hair";
+    hairField.classList.toggle("is-open", show);
+    hairField.inert = !show;
+    hairField.setAttribute("aria-hidden", String(!show));
   }
   service.addEventListener("change", toggleHair);
 
@@ -186,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `*Day:* ${niceDate}`,
       `*Time:* ${timeSel.value}`,
     ];
-    if (!hairField.hidden) lines.push(`*Hair:* ${form.hair.value}`);
+    if (hairShown()) lines.push(`*Hair:* ${form.hair.value}`);
     lines.push(`*Name:* ${document.getElementById("name").value.trim()}`);
     if (notes) lines.push(`*Notes:* ${notes}`);
 

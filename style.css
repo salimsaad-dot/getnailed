@@ -50,11 +50,16 @@ h3 { font-size: 1.45rem; }
   display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
   padding: .95rem 1.6rem; border-radius: 999px; border: 2px solid var(--pink);
   background: var(--pink); color: #fff; font-weight: 600; text-decoration: none; cursor: pointer;
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), color .3s var(--ease), scale .12s var(--ease);
 }
-.btn:hover { background: var(--pink-deep); border-color: var(--pink-deep); transform: translateY(-2px); box-shadow: var(--shadow); }
 .btn-line { background: transparent; color: var(--pink-deep); }
-.btn-line:hover { background: var(--pink); color: #fff; }
+/* Hover effects only on devices with a real mouse/trackpad, so they don't "stick" after a tap on phones */
+@media (hover: hover) {
+  .btn:hover { background: var(--pink-deep); border-color: var(--pink-deep); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn-line:hover { background: var(--pink); color: #fff; }
+}
+/* Tap feedback: buttons give slightly under the thumb (uses `scale` so it combines with any transform) */
+.btn:active, .wa:active, .pills label:active span { scale: .97; }
 .btn-sm { padding: .55rem 1.15rem; font-size: .9rem; }
 .btn-block { width: 100%; padding-block: 1.05rem; }
 
@@ -93,6 +98,7 @@ h3 { font-size: 1.45rem; }
 .blob-1 { width: 420px; height: 420px; background: var(--pink-light); top: -120px; right: -100px; animation: float 12s ease-in-out infinite; }
 .blob-2 { width: 360px; height: 360px; background: #ffd3c4; bottom: -120px; left: -120px; animation: float 14s ease-in-out infinite reverse; }
 @keyframes float { 50% { transform: translate(30px, 25px) scale(1.06); } }
+.hero.offscreen .blob { animation-play-state: paused; } /* no drifting while the hero is out of view */
 
 .hero-inner { position: relative; display: flex; flex-direction: column; align-items: center; }
 .status {
@@ -101,17 +107,33 @@ h3 { font-size: 1.45rem; }
   box-shadow: 0 6px 18px -10px rgba(156, 33, 93, .35);
 }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: #b9a3ae; }
-.status.open .dot { background: #1fb15a; box-shadow: 0 0 0 0 rgba(31, 177, 90, .6); animation: pulse 2s infinite; }
+/* One soft ring when "Open now" first appears (or when the shop opens), then the dot sits still */
+.status.open .dot { background: #1fb15a; animation: pulse .9s ease-out .4s 1; }
 .status.closed .dot { background: #e0475b; }
-@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(31, 177, 90, 0); } 100% { box-shadow: 0 0 0 0 rgba(31, 177, 90, 0); } }
+@keyframes pulse {
+  from { box-shadow: 0 0 0 0 rgba(31, 177, 90, .55); }
+  to   { box-shadow: 0 0 0 10px rgba(31, 177, 90, 0); }
+}
 
 .hero h1 { font-size: clamp(2.1rem, 5.5vw, 3.9rem); max-width: 16ch; }
-.hero h1 .script { display: block; font-size: clamp(4.5rem, 14vw, 9rem); line-height: 1; margin-bottom: .2rem; }
+.hero h1 .script {
+  display: block; font-size: clamp(4.5rem, 14vw, 9rem); line-height: 1; margin-bottom: .2rem;
+  /* Signature moment: the wordmark writes itself in, left to right, like a pen stroke */
+  animation: write 1s var(--ease) .15s backwards;
+}
+@keyframes write {
+  from { clip-path: inset(-25% 100% -25% -10%); }
+  to   { clip-path: inset(-25% -10% -25% -10%); }
+}
 .hero-lead { font-size: 1.15rem; color: var(--muted); max-width: 32rem; margin-top: 1.3rem; }
 .hero-lead em { font-style: normal; color: var(--pink); font-weight: 600; }
 .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2rem; }
 
-.hero-icons { list-style: none; display: flex; gap: clamp(1.5rem, 5vw, 3rem); margin-top: 3.5rem; }
+.hero-icons {
+  list-style: none; display: flex; gap: clamp(1.5rem, 5vw, 3rem); margin-top: 3.5rem;
+  animation: rise .4s var(--ease) .5s backwards; /* the only part of the hero that eases in */
+}
+@keyframes rise { from { opacity: 0; translate: 0 8px; } }
 .hero-icons li { display: flex; flex-direction: column; align-items: center; gap: .6rem; font-size: .78rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--pink-deep); }
 .ring {
   width: 78px; height: 78px; border-radius: 50%; display: grid; place-items: center;
@@ -119,7 +141,9 @@ h3 { font-size: 1.45rem; }
   transition: transform .4s var(--ease), background .3s, color .3s;
 }
 .ring svg { width: 38px; height: 38px; }
-.hero-icons li:hover .ring { transform: translateY(-4px) rotate(-4deg); background: var(--pink); color: #fff; }
+@media (hover: hover) {
+  .hero-icons li:hover .ring { transform: translateY(-4px) rotate(-4deg); background: var(--pink); color: #fff; }
+}
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(4.5rem, 9vw, 7rem) 0; }
@@ -137,7 +161,7 @@ h3 { font-size: 1.45rem; }
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
 }
-.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+@media (hover: hover) { .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); } }
 .card-feature { border: 2px solid var(--pink); }
 .badge { position: absolute; top: -13px; right: 1.5rem; background: var(--pink); color: #fff; font-size: .74rem; font-weight: 600; padding: .3rem .8rem; border-radius: 999px; }
 .card-icon { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; background: var(--soft); color: var(--pink); margin-bottom: 1.3rem; }
@@ -154,13 +178,9 @@ h3 { font-size: 1.45rem; }
 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 1rem; }
 .tile {
   position: relative; border-radius: var(--r); overflow: hidden; display: grid; place-items: center; color: rgba(255, 255, 255, .9);
-  transition: transform .4s var(--ease);
 }
-.tile:hover { transform: scale(1.02); }
-.tile svg { width: 72px; height: 72px; transition: transform .5s var(--ease); }
-.tile:hover svg { transform: scale(1.15) rotate(-6deg); }
 .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform .8s var(--ease); }
-.tile:hover img { transform: scale(1.06); }
+@media (hover: hover) { .tile:hover img { transform: scale(1.06); } } /* one slow photo zoom, nothing else */
 .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(45, 20, 36, .35), transparent 45%); pointer-events: none; }
 .tile figcaption { z-index: 1; }
 .tile figcaption {
@@ -195,9 +215,12 @@ h3 { font-size: 1.45rem; }
 .week .closed { color: #d0435a; }
 .week tr.today { background: var(--soft); }
 .week tr.today th, .week tr.today td { color: var(--pink-deep); }
-.week tr.today th::after { content: "Today"; margin-left: .6rem; font-size: .7rem; font-weight: 600; background: var(--pink); color: #fff; padding: .15rem .55rem; border-radius: 999px; vertical-align: middle; }
+.week tr.today th::after { content: "Today"; display: inline-block; margin-left: .6rem; font-size: .7rem; font-weight: 600; background: var(--pink); color: #fff; padding: .15rem .55rem; border-radius: 999px; vertical-align: middle; }
 .week tr.today th { border-radius: 12px 0 0 12px; }
 .week tr.today td { border-radius: 0 12px 12px 0; }
+/* The "Today" badge pops in once when the hours card scrolls into view */
+.hours-card.in .week tr.today th::after { animation: pop .3s var(--ease) .55s backwards; }
+@keyframes pop { from { opacity: 0; scale: .9; } }
 
 /* ---------- Booking ---------- */
 .book { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2.5rem, 6vw, 5rem); align-items: center; }
@@ -209,7 +232,23 @@ h3 { font-size: 1.45rem; }
 
 .form { background: var(--surface); color: var(--ink); border-radius: calc(var(--r) + 4px); padding: clamp(1.5rem, 4vw, 2.4rem); display: grid; gap: 1.1rem; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .6); }
 .f { display: grid; gap: .4rem; border: 0; min-width: 0; }
-.f[hidden] { display: none; }
+
+/* "Hair / extensions" question: slides closed for the Hair service and open again for the others */
+.collapse {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows .15s ease-in, opacity .15s ease-in;
+}
+.collapse.is-open {
+  grid-template-rows: 1fr; opacity: 1;
+  transition: grid-template-rows .22s var(--ease), opacity .22s var(--ease);
+}
+.collapse-inner { min-height: 0; overflow: hidden; margin-inline: -4px; padding-inline: 4px; }
+.collapse .f {
+  /* top padding = the form's gap (collapses with the question); 4px bottom = room for the focus outline */
+  padding: 1.1rem 0 4px;
+  transform: translateY(-6px); transition: transform .22s var(--ease);
+}
+.collapse.is-open .f { transform: none; }
 .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .f label, .f legend { font-size: .85rem; font-weight: 600; }
 .f legend { margin-bottom: .4rem; }
@@ -225,17 +264,18 @@ h3 { font-size: 1.45rem; }
 .pills { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
 .pills label { position: relative; cursor: pointer; }
 .pills input { position: absolute; opacity: 0; pointer-events: none; }
-.pills span { display: block; text-align: center; padding: .8rem .5rem; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); font-size: .92rem; font-weight: 500; transition: all .25s var(--ease); }
+.pills span { display: block; text-align: center; padding: .8rem .5rem; border-radius: 14px; border: 1.5px solid var(--line); background: var(--bg); font-size: .92rem; font-weight: 500; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), scale .12s var(--ease); }
 .pills input:checked + span { background: var(--pink); border-color: var(--pink); color: #fff; }
 .pills input:focus-visible + span { outline: 2px solid var(--pink); outline-offset: 2px; }
-.err { color: #c0334a; font-size: .88rem; }
+.err { color: #c0334a; font-size: .88rem; transition: opacity .15s var(--ease), translate .15s var(--ease); }
 .err:empty { display: none; }
+@starting-style { .err { opacity: 0; translate: 0 -4px; } } /* fades in when a message appears */
 
 /* ---------- Footer ---------- */
 .footer { background: #1f0d19; color: #cdb3c1; padding: 3.5rem 0 2rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
 .socials { display: flex; gap: .6rem; }
-.socials a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .18); text-decoration: none; font-size: 1.1rem; transition: all .3s var(--ease); }
+.socials a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .18); text-decoration: none; font-size: 1.1rem; transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease); }
 .socials a:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .1); font-size: .84rem; }
 .footer-bottom a { color: var(--pink-light); text-decoration: none; }
@@ -244,13 +284,14 @@ h3 { font-size: 1.45rem; }
 .wa {
   position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 90; width: 58px; height: 58px; border-radius: 50%;
   display: grid; place-items: center; background: var(--wa); color: #fff; font-size: 1.8rem; text-decoration: none;
-  box-shadow: 0 10px 25px -8px rgba(37, 211, 102, .65); transition: transform .3s var(--ease);
+  box-shadow: 0 10px 25px -8px rgba(37, 211, 102, .65); transition: transform .3s var(--ease), scale .12s var(--ease);
 }
-.wa:hover { transform: scale(1.08); }
+@media (hover: hover) { .wa:hover { transform: scale(1.08); } }
 
 /* ---------- Reveal ---------- */
-.js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
-.js .reveal.in { opacity: 1; transform: none; }
+/* Uses `translate` (not `transform`) so it doesn't cancel hover lifts like .card:hover */
+.js .reveal { opacity: 0; translate: 0 16px; transition: opacity .6s var(--ease) var(--d, 0s), translate .6s var(--ease) var(--d, 0s); }
+.js .reveal.in { opacity: 1; translate: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 920px) {
@@ -282,5 +323,5 @@ h3 { font-size: 1.45rem; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .js .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; translate: none; }
 }
