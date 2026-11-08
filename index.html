@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getnailed Beauty Lounge | Braids, Installs &amp; Hair</title>
+  <meta name="description" content="Getnailed Beauty Lounge: braids, wig installs and hair styling. Open Tuesday to Sunday. Book your appointment on WhatsApp." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Getnailed Beauty Lounge" />
+  <meta property="og:description" content="Braids, installs and hair, done with love. Book on WhatsApp." />
+  <meta name="theme-color" content="#c2387a" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%23c2387a'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Georgia,serif' font-style='italic'>G</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add("js");</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Getnailed Beauty Lounge",
+    "telephone": "+233502850772",
+    "sameAs": ["https://www.instagram.com/getnailed_beautylounge/"],
+    "address": { "@type": "PostalAddress", "addressCountry": "GH" },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "08:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "14:00", "closes": "20:00" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Reusable icons (match the three icons on the shop's board) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-braids" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <path d="M24 4c-6 4-6 8 0 12s6 8 0 12-6 8 0 12" />
+      <path d="M24 4c6 4 6 8 0 12s-6 8 0 12 6 8 0 12" />
+      <path d="M24 40v4" />
+    </symbol>
+    <symbol id="i-installs" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 42V23a15 15 0 0 1 30 0v19" />
+      <path d="M16 42V24a8 8 0 0 1 16 0v18" />
+      <path d="M24 8v8" />
+    </symbol>
+    <symbol id="i-hair" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <path d="M14 6c-4 6 4 10 0 16s4 10 0 20" />
+      <path d="M24 4c-4 6 4 10 0 16s4 12 0 24" />
+      <path d="M34 6c-4 6 4 10 0 16s4 10 0 20" />
+    </symbol>
+  </svg>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Getnailed Beauty Lounge, home">
+        <span class="brand-script">Getnailed</span>
+        <span class="brand-sub">beauty lounge</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#work">Our work</a>
+        <a href="#hours">Hours</a>
+        <a href="#book" class="btn btn-sm">Book now</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="blob blob-1" aria-hidden="true"></div>
+      <div class="blob blob-2" aria-hidden="true"></div>
+
+      <div class="wrap hero-inner">
+        <p class="status reveal" id="status" aria-live="polite"><span class="dot"></span><span id="statusText">Checking hours…</span></p>
+        <h1 class="reveal" style="--d:.05s">
+          <span class="script">Getnailed</span>
+          Braids, installs &amp; hair,<br />done with love.
+        </h1>
+        <p class="hero-lead reveal" style="--d:.1s">
+          Walk in feeling good, walk out feeling <em>great</em>. Book your slot in seconds on WhatsApp.
+        </p>
+        <div class="hero-cta reveal" style="--d:.15s">
+          <a href="#book" class="btn"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Book an appointment</a>
+          <a href="#services" class="btn btn-line">View services</a>
+        </div>
+
+        <ul class="hero-icons reveal" style="--d:.2s">
+          <li><span class="ring"><svg><use href="#i-braids" /></svg></span>Braids</li>
+          <li><span class="ring"><svg><use href="#i-installs" /></svg></span>Installs</li>
+          <li><span class="ring"><svg><use href="#i-hair" /></svg></span>Hair</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <!-- TODO: confirm styles offered + prices with the owner. Does "Getnailed" also do NAILS? If yes, add a 4th card. -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="head reveal">
+          <p class="kicker">What we do</p>
+          <h2>Our services</h2>
+          <p>Tell us the look you want. We'll make it happen.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-icon"><svg><use href="#i-braids" /></svg></span>
+            <h3>Braids</h3>
+            <p>Neat, long-lasting braids that are gentle on your edges.</p>
+            <ul class="ticks">
+              <li>Knotless &amp; box braids</li>
+              <li>Cornrows &amp; stitch braids</li>
+              <li>Twists &amp; locs styles</li>
+            </ul>
+            <div class="card-foot">
+              <span class="price-note">Price depends on length &amp; size</span>
+              <a href="#book" class="btn btn-sm" data-service="Braids">Book</a>
+            </div>
+          </article>
+
+          <article class="card card-feature reveal" style="--d:.06s">
+            <span class="badge">Most loved</span>
+            <span class="card-icon"><svg><use href="#i-installs" /></svg></span>
+            <h3>Installs</h3>
+            <p>Flawless, natural-looking installs that blend like your own hair.</p>
+            <ul class="ticks">
+              <li>Frontal &amp; closure installs</li>
+              <li>Glueless wig installs</li>
+              <li>Wig customising &amp; revamps</li>
+            </ul>
+            <div class="card-foot">
+              <span class="price-note">Ask for a quote on WhatsApp</span>
+              <a href="#book" class="btn btn-sm" data-service="Installs">Book</a>
+            </div>
+          </article>
+
+          <article class="card reveal" style="--d:.12s">
+            <span class="card-icon"><svg><use href="#i-hair" /></svg></span>
+            <h3>Hair</h3>
+            <p>Healthy hair care and styling for every texture.</p>
+            <ul class="ticks">
+              <li>Wash, treatment &amp; blow-dry</li>
+              <li>Silk press &amp; styling</li>
+              <li>Weaves &amp; sew-ins</li>
+            </ul>
+            <div class="card-foot">
+              <span class="price-note">Price on request</span>
+              <a href="#book" class="btn btn-sm" data-service="Hair">Book</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== OUR WORK ===== -->
+    <!-- TODO: these are FREE STOCK PHOTOS from Pexels (pexels.com/license, free for commercial use) used for the pitch.
+         Replace with the salon's real work from @getnailed_beautylounge before the site is launched publicly. -->
+    <section class="section section-soft" id="work">
+      <div class="wrap">
+        <div class="head reveal">
+          <p class="kicker">Fresh from the chair</p>
+          <h2>Our work</h2>
+          <p>See more of our latest styles on Instagram.</p>
+        </div>
+
+        <div class="tiles">
+          <figure class="tile t1 reveal"><img src="images/knotless-braids.jpg" alt="Long black knotless braids" loading="lazy" /><figcaption>Knotless braids</figcaption></figure>
+          <figure class="tile t2 reveal" style="--d:.05s"><img src="images/curly-install.jpg" alt="Long curly install" loading="lazy" /><figcaption>Curly install</figcaption></figure>
+          <figure class="tile t3 reveal" style="--d:.1s"><img src="images/ginger-braids.jpg" alt="Ginger coloured braids" loading="lazy" /><figcaption>Ginger braids</figcaption></figure>
+          <figure class="tile t4 reveal"><img src="images/stitch-braids.jpg" alt="Stitch braids" loading="lazy" /><figcaption>Stitch braids</figcaption></figure>
+          <figure class="tile t5 reveal" style="--d:.05s"><img src="images/natural-hair.jpg" alt="Healthy natural afro hair" loading="lazy" style="object-position: center 20%" /><figcaption>Natural hair</figcaption></figure>
+          <figure class="tile t6 reveal"><img src="images/curly-styling.jpg" alt="Curly hair styling" loading="lazy" style="object-position: center 20%" /><figcaption>Curly styling</figcaption></figure>
+          <figure class="tile t7 reveal" style="--d:.05s"><img src="images/colour-braids.jpg" alt="Bold red colour braids" loading="lazy" style="object-position: center 35%" /><figcaption>Colour braids</figcaption></figure>
+        </div>
+
+        <div class="center reveal">
+          <a href="https://www.instagram.com/getnailed_beautylounge/" target="_blank" rel="noopener" class="btn btn-line">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i> @getnailed_beautylounge
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOURS ===== -->
+    <section class="section" id="hours">
+      <div class="wrap hours">
+        <div class="hours-copy reveal">
+          <p class="kicker">Visit us</p>
+          <h2>Opening hours</h2>
+          <p>Walk-ins are welcome when we have space, but booking ahead guarantees your slot.</p>
+          <ul class="contact">
+            <li><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><a href="https://wa.me/233502850772" target="_blank" rel="noopener">050 285 0772</a></li>
+            <li><i class="fa-brands fa-instagram" aria-hidden="true"></i><a href="https://www.instagram.com/getnailed_beautylounge/" target="_blank" rel="noopener">getnailed_beautylounge</a></li>
+            <li><i class="fa-brands fa-snapchat" aria-hidden="true"></i><span>Gnbl 2019</span></li>
+            <!-- TODO: replace with the real area / landmark + Google Maps link -->
+            <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><a href="https://wa.me/233502850772?text=Hello%20Getnailed!%20Please%20send%20me%20directions%20to%20the%20shop." target="_blank" rel="noopener">Message us for directions</a></li>
+          </ul>
+        </div>
+
+        <div class="hours-card reveal" style="--d:.08s">
+          <table class="week" id="week">
+            <tbody>
+              <tr data-day="1"><th>Monday</th><td class="closed">Closed</td></tr>
+              <tr data-day="2"><th>Tuesday</th><td>8:00am – 8:00pm</td></tr>
+              <tr data-day="3"><th>Wednesday</th><td>8:00am – 8:00pm</td></tr>
+              <tr data-day="4"><th>Thursday</th><td>8:00am – 8:00pm</td></tr>
+              <tr data-day="5"><th>Friday</th><td>8:00am – 8:00pm</td></tr>
+              <tr data-day="6"><th>Saturday</th><td>8:00am – 8:00pm</td></tr>
+              <tr data-day="0"><th>Sunday</th><td>2:00pm – 8:00pm</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING ===== -->
+    <section class="section section-plum" id="book">
+      <div class="wrap book">
+        <div class="book-copy reveal">
+          <p class="kicker">Appointments</p>
+          <h2>Book your slot</h2>
+          <p>Pick a service, day and time. We'll open WhatsApp with your request ready. Just tap send and we'll confirm.</p>
+          <ol class="steps">
+            <li><span>1</span>Fill in the form</li>
+            <li><span>2</span>Send on WhatsApp</li>
+            <li><span>3</span>Get your confirmation</li>
+          </ol>
+        </div>
+
+        <form class="form reveal" id="bookForm" style="--d:.08s" novalidate>
+          <div class="f">
+            <label for="service">Service</label>
+            <select id="service" required>
+              <option value="">Choose a service…</option>
+              <option>Braids</option>
+              <option>Installs</option>
+              <option>Hair</option>
+            </select>
+          </div>
+
+          <div class="f">
+            <label for="style">Style you want <span class="opt">(optional)</span></label>
+            <input id="style" type="text" placeholder="e.g. Medium knotless, waist length" />
+          </div>
+
+          <div class="f-row">
+            <div class="f">
+              <label for="date">Day</label>
+              <input id="date" type="date" required />
+            </div>
+            <div class="f">
+              <label for="time">Time</label>
+              <select id="time" required disabled>
+                <option value="">Pick a day first</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset class="f" id="hairField">
+            <legend>Hair / extensions</legend>
+            <div class="pills">
+              <label><input type="radio" name="hair" value="I'll bring my own hair" checked /><span>I'll bring my own</span></label>
+              <label><input type="radio" name="hair" value="Please provide the hair" /><span>Please provide it</span></label>
+            </div>
+          </fieldset>
+
+          <div class="f">
+            <label for="name">Your name</label>
+            <input id="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="f">
+            <label for="notes">Notes <span class="opt">(optional)</span></label>
+            <textarea id="notes" rows="2" placeholder="Colour, inspiration, anything we should know…"></textarea>
+          </div>
+
+          <p class="err" id="err" role="alert"></p>
+          <button class="btn btn-block" type="submit"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Send on WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a href="#top" class="brand brand-light"><span class="brand-script">Getnailed</span><span class="brand-sub">beauty lounge</span></a>
+      <div class="socials">
+        <a href="https://wa.me/233502850772" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/getnailed_beautylounge/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="year">2026</span> Getnailed Beauty Lounge</p>
+      <p>Website by <a href="mailto:salimsaad135@gmail.com">Salim Saad</a></p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/233502850772" class="wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script src="script.js"></script>
+</body>
+</html>
