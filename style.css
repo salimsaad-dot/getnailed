@@ -179,7 +179,7 @@ h3 { font-size: 1.45rem; }
 .tile {
   position: relative; border-radius: var(--r); overflow: hidden; display: grid; place-items: center; color: rgba(255, 255, 255, .9);
 }
-.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform .8s var(--ease); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transition: transform .8s var(--ease), opacity .4s var(--ease); }
 @media (hover: hover) { .tile:hover img { transform: scale(1.06); } } /* one slow photo zoom, nothing else */
 .tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(45, 20, 36, .35), transparent 45%); pointer-events: none; }
 .tile figcaption { z-index: 1; }
@@ -295,6 +295,10 @@ h3 { font-size: 1.45rem; }
   box-shadow: 0 10px 25px -8px rgba(37, 211, 102, .65); transition: transform .3s var(--ease), scale .12s var(--ease);
 }
 @media (hover: hover) { .wa:hover { transform: scale(1.08); } }
+
+/* ---------- Photos fade in once downloaded (no pop-in on slow mobile data) ---------- */
+.js .fade-img { opacity: 0; }
+.js .fade-img.loaded { opacity: 1; }
 
 /* ---------- Reveal ---------- */
 /* Uses `translate` (not `transform`) so it doesn't cancel hover lifts like .card:hover */
