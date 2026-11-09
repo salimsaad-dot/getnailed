@@ -203,7 +203,7 @@ h3 { font-size: 1.45rem; }
 .contact { list-style: none; display: grid; gap: .85rem; }
 .contact li { display: flex; align-items: center; gap: .9rem; }
 .contact i { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); color: var(--pink); }
-.contact a { text-decoration: none; font-weight: 600; }
+.contact a { text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; } /* 44px tap area */
 .contact a:hover { color: var(--pink); }
 
 .hours-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem; box-shadow: var(--shadow); }
@@ -286,7 +286,7 @@ h3 { font-size: 1.45rem; }
 .socials a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .18); text-decoration: none; font-size: 1.1rem; transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease); }
 .socials a:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, .1); font-size: .84rem; }
-.footer-bottom a { color: var(--pink-light); text-decoration: none; }
+.footer-bottom a { color: var(--pink-light); text-decoration: none; display: inline-block; padding-block: .8rem; margin-block: -.8rem; }
 
 /* ---------- Floating WhatsApp ---------- */
 .wa {
