@@ -41,7 +41,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
 .center { text-align: center; margin-top: 2.5rem; }
 
-h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -.02em; }
+h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+::selection { background: var(--pink-light); color: var(--plum); } /* themed text highlight */
 h2 { font-size: clamp(2.1rem, 4.5vw, 3rem); }
 h3 { font-size: 1.45rem; }
 .script { font-family: var(--script); font-weight: 400; letter-spacing: 0; color: var(--pink); }
